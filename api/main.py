@@ -4,7 +4,11 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import pandas as pd
 import csv
+from werkzeug.middleware.proxy_fix import ProxyFix
+
+
 app = Flask(__name__)
+
 import requests
 from io import StringIO
 @app.after_request
@@ -79,5 +83,5 @@ def recommend_favourite(_id):
     return relevant_product[['Product_ID', 'Product_Name', 'Product_Description', 'Product_Type', 'Brand', 'Product_Thumbnail','Product_Shop', 'Product_Price']]
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+      app.run(host='0.0.0.0', port=80)
