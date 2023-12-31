@@ -43,7 +43,7 @@ def get_recommendation():
 # Load dataframes
 product_df = read_csv_from_google_drive("https://drive.google.com/file/d/1OD8u_UUT4V8-igeCWQHLYCJhJeEjUtY5/view?usp=sharing")
 # favorite_df = pd.read_csv('C:/Users/nguye/Desktop/DATN/file.csv')
-favorite_df = read_csv_from_google_drive("https://drive.google.com/file/d/1MvynX0gbHkokT6yTNMh1Bm0XpMJEGubB/view?usp=drive_link")
+favorite_df = read_csv_from_google_drive("https://drive.google.com/file/d/1MvynX0gbHkokT6yTNMh1Bm0XpMJEGubB/view?usp=sharing")
 print(product_df)
 
 def similarity(text, keyword):
