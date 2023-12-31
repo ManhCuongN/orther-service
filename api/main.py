@@ -21,7 +21,7 @@ def after_request(response):
 
 def read_csv_from_google_drive(url):
     reconstructed_url = 'https://drive.google.com/uc?id=' + url.split('/')[-2]
-    df = pd.read_csv(reconstructed_url)
+    df = pd.read_csv(reconstructed_url, encoding='ISO-8859-1')
     return df
 
 
@@ -38,13 +38,14 @@ def get_recommendation():
     data = request.get_json()
     _id = data['_id']
     recommended_courses = recommend_favourite(_id)
+
     return jsonify(recommended_courses.to_dict('records'))
 
 # Load dataframes
 product_df = read_csv_from_google_drive("https://drive.google.com/file/d/1OD8u_UUT4V8-igeCWQHLYCJhJeEjUtY5/view?usp=drive_link")
-# favorite_df = pd.read_csv('C:/Users/nguye/Desktop/DATN/file.csv')
+#favorite_df = pd.read_csv('C:/Users/nguye/Desktop/DATN/file.csv')
 favorite_df = read_csv_from_google_drive("https://drive.google.com/file/d/1MvynX0gbHkokT6yTNMh1Bm0XpMJEGubB/view?usp=sharing")
-print(product_df)
+
 
 def similarity(text, keyword):
     vectorizer = TfidfVectorizer()
